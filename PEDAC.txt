@@ -1,0 +1,31 @@
+PEDAC
+
+Problem
+Example
+Data (data structure)
+Algorithm
+Code
+
+Explorer Mode
+
+-Display some sort of greeting to describe the game or challenge.
+    "Hello, if you think of a number between x and y, I can guess your number in z tries.
+
+-Ask the challenger to think of a number between 1 and 1024.
+    "Think of a number between 1 and 1024, but remember, do not tell me the number"
+
+-Don't get the number from the user, you need to guess the number
+
+-Guess a number and ask the user if the number you guessed is higher or lower to the number they are thinking of.
+    "Is your number higher or lower than x?"
+    Depending on the answer, apply Algorithm 
+    
+-Keep trying until you guess the number correctly.
+
+Adventure Mode
+
+-Allow the user to choose the maximum number for their range.
+
+-Tell them the most number of guesses your code will need!
+
+-Prompt the user to play again at the end of the game.

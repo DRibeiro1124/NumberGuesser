@@ -11,7 +11,8 @@ Explorer Mode
 -Display some sort of greeting to describe the game or challenge.
     "Hello, if you think of a number between x and y, I can guess your number in z tries.
 
--Ask the challenger to think of a number between 1 and 1024.
+-Ask the challenger for their name and to think of a number between 1 and 1024.
+    " Hi, what's your name?"
     "Think of a number between 1 and 1024, but remember, do not tell me the number"
 
 -Don't get the number from the user, you need to guess the number

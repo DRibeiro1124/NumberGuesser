@@ -30,3 +30,39 @@ Adventure Mode
 -Tell them the most number of guesses your code will need!
 
 -Prompt the user to play again at the end of the game.
+
+
+Algorithm
+
+1- Get a greeting out to the player and explain the guessing game.
+2- The user gets to pick a number (in their head) between 0 and 1024.
+3- Tell the user you'll be able to guess that number in 10 tries or less.
+4- For the max value (1024), we have to divide that by 2 and get 512. 
+    Ask the user if their number is higher or lower than 512.
+5- If their number is higher, you know it's between 513 and 1024, or if it's 
+    lower, it's between 1 and 511.
+6- Create a loop depending on the response from user in line 5.
+7- Once you guessed the number, prompt a phrase saying you have guessed 
+    their number in x amount of guesses.
+8- Ask if they want to try again.
+
+
+ static string PromptForString(string prompt)
+            {
+                Console.WriteLine(prompt);
+                var userInput = Console.ReadLine();
+                return userInput;
+            }
+
+            static void GameGreeting()
+            {
+                Console.WriteLine("----------------------------------");
+                Console.WriteLine("Welcome to the Number Guesser Game");
+                Console.WriteLine("----------------------------------");
+                Console.WriteLine();
+                Console.WriteLine();
+                var name = PromptForString("What is your name?");
+
+                Console.WriteLine(($"Hello {name}! Think of a number between 1 and 1024. DO NOT TELL ME YOUR NUMBER!! I'll try to guess it correctly in 10 tries or less"));
+
+            }

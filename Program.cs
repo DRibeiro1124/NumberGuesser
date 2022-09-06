@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace NumberGuesser
 {
@@ -6,40 +7,47 @@ namespace NumberGuesser
     {
         static void Main(string[] args)
         {
-            GameGreeting();
-
             int min = 1;
             int max = 1024;
-            int guess = 0;
+            int middle = 0;
             string response = "";
             int numberOfGuesses = 0;
+            string replay = "yes";
 
-            while (response != "correct")
+            while (PlayAgain(replay))
             {
-                guess = (min + max) / 2;
-                response = PromptCorrectGuess(guess);
-                numberOfGuesses++;
-
-                if (!ValidateResponse(response))
+                GameGreeting();
+                while (response != "correct")
                 {
-                    Console.WriteLine("Error! 📛 Please input the correct response. Exiting game");
-                    return;
-                };
+                    middle = (min + max) / 2;
+                    response = PromptCorrectGuess(middle);
+                    numberOfGuesses++;
 
-                if (response == "lower")
-                {
-                    max = guess;
+                    if (!ValidateResponse(response))
+                    {
+                        Console.WriteLine("Error! 📛 Please input a correct response. Exiting game in 3... 2... 1... 💣 💣 💣");
+                        return;
+                    };
+
+                    if (response == "lower")
+                    {
+                        max = middle;
+                    }
+
+                    else if (response == "higher")
+                    {
+                        min = middle;
+                    }
                 }
-
-                else if (response == "higher")
-                {
-                    min = guess;
-                }
-
+                BragWhenCorrect(numberOfGuesses);
+                Console.WriteLine($"Would you like to play again? " + "yes or no?");
+                replay = Console.ReadLine().ToLower();
+                min = 1;
+                max = 1024;
+                middle = 0;
+                response = " ";
+                numberOfGuesses = 0;
             }
-
-            BragWhenCorrect();
-            Console.WriteLine($"I'm the greatest! 😉 It only took me {numberOfGuesses} guesses to pick your number correctly");
 
         }
 
@@ -65,9 +73,9 @@ namespace NumberGuesser
         }
 
 
-        static string PromptCorrectGuess(int guess)
+        static string PromptCorrectGuess(int middle)
         {
-            Console.WriteLine($"I think your number is {guess}! Am I CORRECT? or is it HIGHER or LOWER");
+            Console.WriteLine($"I think your number is {middle}! Am I CORRECT? or is it HIGHER or LOWER");
             return Console.ReadLine().ToLower();
         }
 
@@ -75,19 +83,31 @@ namespace NumberGuesser
         {
             if (response == "correct" || response == "higher" || response == "lower")
             {
-
                 return true;
             }
-
             else
             {
                 return false;
             }
         }
 
-        static void BragWhenCorrect()
+        static bool PlayAgain(string restartGame)
+        {
+            if (restartGame == "yes")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        static void BragWhenCorrect(int numberOfGuesses)
         {
             Console.WriteLine("As always, I win!!! 😎 😎 😎");
+            Console.WriteLine($"I'm the greatest! 😉 It only took me {numberOfGuesses} guesses to pick your number correctly");
         }
 
     }
